@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AJDNNDatabase" Class="bokemonLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=AJDNNDatabase;User ID=forfAdmin2" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SiteSqlServer" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblmonster" Member="tblmonsters">
+    <Type Name="tblmonster">
+      <Column Name="Monsterid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="timetonext" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="totalscore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblmonsterList" Member="tblmonsterLists">
+    <Type Name="tblmonsterList">
+      <Column Name="monId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="monsternamn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="monstersrc" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="monsterinfo" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="basepoint" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bonus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblmonsterToUser" Member="tblmonsterToUsers">
+    <Type Name="tblmonsterToUser">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="monid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MonsterScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monlevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblmonsterDrakelist" Member="tblmonsterDrakelists">
+    <Type Name="tblmonsterDrakelist">
+      <Column Name="drakId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="draknamn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="draksrc" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="drakinfo" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="drakbasepoint" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="drakbonus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.AJ_getMonsterlistExt" Method="AJ_getMonsterlistExt">
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="AJ_getMonsterlistExtResult">
+      <Column Name="monId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="monsternamn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="monstersrc" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="basepoint" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bonus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monsterinfo" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MonsterScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monlevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
