@@ -7,6 +7,7 @@ Public Class bokemonsterInfo
         _bokemonInfo = ""
         _monstername = ""
         _bokemonScore = 0
+        _bokemonXP = 0
         _bokemonlevel = 1
         _basepoint = 0
         _bonus = 0
@@ -56,6 +57,16 @@ Public Class bokemonsterInfo
             _bokemonScore = value
         End Set
     End Property
+    Private _bokemonXP As String
+    Public Property BokemonXP() As String
+        Get
+            Return _bokemonXP
+        End Get
+        Set(ByVal value As String)
+            _bokemonXP = value
+        End Set
+    End Property
+
     Private _bokemonlevel As Integer
     Public Property BokemonLevel() As Integer
         Get

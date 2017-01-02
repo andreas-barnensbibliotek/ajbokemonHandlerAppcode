@@ -57,19 +57,28 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler
         Public Function MonsterToUserList(ByVal userid As Integer, ByVal monsterid As Integer) As bokemonInfo
             Dim retobj As New bokemonInfo
             Dim dalobj As New bokemonDAL
+            Dim currentMonsterXP As Integer = 0
             Dim currentMonsterScore As Integer = 0
+            Dim MonsterMaxPoint As Integer = 0
 
 
             If monsterid > 0 Then
 
-                currentMonsterScore = dalobj.isBokemonInUserList(userid, monsterid)
+                currentMonsterXP = dalobj.isBokemonInUserList(userid, monsterid) 'monsterxp är samma som monsterscore tills monsterscore når maxpoint, sedan ökar bara monsterxp
+                MonsterMaxPoint = dalobj.getBokemonmaxpoint(monsterid)
 
-                If currentMonsterScore > 0 Then
+                If currentMonsterXP > 0 Then
 
-                    Dim newmonscore As Integer = calcMonsterScore("upd", currentMonsterScore)
+                    Dim newmonsXP As Integer = calcMonsterScore("upd", currentMonsterXP)
+                    If newmonsXP <= MonsterMaxPoint Then
+                        currentMonsterScore = newmonsXP
+                    Else
+                        currentMonsterScore = MonsterMaxPoint
+                    End If
+
                     Dim newlevel As Integer = calcMonsterLevel(currentMonsterScore)
 
-                    Dim isupdated As Boolean = dalobj.updMonsterToUser(userid, monsterid, newlevel, newmonscore)
+                    Dim isupdated As Boolean = dalobj.updMonsterToUser(userid, monsterid, newlevel, currentMonsterScore, newmonsXP)
                     retobj = dalobj.getUserbokemon(userid)
 
                     If isupdated Then

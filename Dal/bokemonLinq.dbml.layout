@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="bokemonLinq">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.125" name="bokemonLinq">
   <DataContextMoniker Name="/bokemonLinqDataContext" />
   <nestedChildShapes>
-    <classShape Id="b6d169c3-b7c7-4e08-8b6b-a194cc69abff" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/bokemonLinqDataContext/tblmonster" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7e67f2c2-24d3-4b01-990c-4a3cdc962bb1" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="e7cd453c-051d-4d79-add3-8947e4f46ad8" absoluteBounds="3.75, 0.75, 2, 1.9631982421875">
-      <DataClassMoniker Name="/bokemonLinqDataContext/tblmonsterList" />
-      <nestedChildShapes>
-        <elementListCompartment Id="2a93b5c3-1efc-4490-a5ad-38e5188aee64" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="4f2163be-8983-4940-81df-3de8efecaf3e" absoluteBounds="0.75, 3.75, 2, 1.7708968098958327">
+    <classShape Id="81c8ea73-8d4b-436a-947f-ec5b4058ed15" absoluteBounds="6.75, 0.75, 2, 1.9631982421875003">
       <DataClassMoniker Name="/bokemonLinqDataContext/tblmonsterToUser" />
       <nestedChildShapes>
-        <elementListCompartment Id="45950a41-f7b7-4f5e-b697-4e54b925a0e9" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3059c67b-077b-45ed-9cf4-aef4a43e56f0" absoluteBounds="6.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="15214284-7a72-4b01-8a28-2d881a987a9d" absoluteBounds="3.375, 3.25, 2, 1.9631982421875">
+    <classShape Id="ca46f153-456b-4b98-82c8-c469f2d74490" absoluteBounds="0.75, 6.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/bokemonLinqDataContext/tblmonsterList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="887678f5-f785-42b6-b3fe-8fc7285adb8f" absoluteBounds="0.765, 7.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f5fe60f1-672b-4405-83ed-8e7863ea0c08" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/bokemonLinqDataContext/tblmonster" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1c0de3a8-a5b9-40e3-8b23-53ec1691f908" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dfd16aad-a28f-4c4c-9b28-17bd15f40ac7" absoluteBounds="3.75, 0.75, 2, 1.9631982421875">
       <DataClassMoniker Name="/bokemonLinqDataContext/tblmonsterDrakelist" />
       <nestedChildShapes>
-        <elementListCompartment Id="465c9faa-186e-44b2-9462-09cae7e382a4" absoluteBounds="3.3899999999999997, 3.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3ff71bf1-d4ca-4b95-8e3c-52164338aa12" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

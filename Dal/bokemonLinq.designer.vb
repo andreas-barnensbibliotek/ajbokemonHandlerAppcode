@@ -32,11 +32,11 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler.Dal
     #Region "Extensibility Method Definitions"
     Partial Private Sub OnCreated()
     End Sub
-    Partial Private Sub Inserttblmonster(instance As tblmonster)
+    Partial Private Sub InserttblmonsterToUser(instance As tblmonsterToUser)
     End Sub
-    Partial Private Sub Updatetblmonster(instance As tblmonster)
+    Partial Private Sub UpdatetblmonsterToUser(instance As tblmonsterToUser)
     End Sub
-    Partial Private Sub Deletetblmonster(instance As tblmonster)
+    Partial Private Sub DeletetblmonsterToUser(instance As tblmonsterToUser)
     End Sub
     Partial Private Sub InserttblmonsterList(instance As tblmonsterList)
     End Sub
@@ -44,11 +44,11 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler.Dal
     End Sub
     Partial Private Sub DeletetblmonsterList(instance As tblmonsterList)
     End Sub
-    Partial Private Sub InserttblmonsterToUser(instance As tblmonsterToUser)
+    Partial Private Sub Inserttblmonster(instance As tblmonster)
     End Sub
-    Partial Private Sub UpdatetblmonsterToUser(instance As tblmonsterToUser)
+    Partial Private Sub Updatetblmonster(instance As tblmonster)
     End Sub
-    Partial Private Sub DeletetblmonsterToUser(instance As tblmonsterToUser)
+    Partial Private Sub Deletetblmonster(instance As tblmonster)
     End Sub
     Partial Private Sub InserttblmonsterDrakelist(instance As tblmonsterDrakelist)
     End Sub
@@ -59,7 +59,7 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler.Dal
     #End Region
 		
 		Public Sub New()
-			MyBase.New(Global.System.Configuration.ConfigurationManager.ConnectionStrings("SiteSqlServer").ConnectionString, mappingSource)
+			MyBase.New(Global.System.Configuration.ConfigurationManager.ConnectionStrings("AJDNNDatabaseConnectionString").ConnectionString, mappingSource)
 			OnCreated
 		End Sub
 		
@@ -83,9 +83,9 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler.Dal
 			OnCreated
 		End Sub
 		
-		Public ReadOnly Property tblmonsters() As System.Data.Linq.Table(Of tblmonster)
+		Public ReadOnly Property tblmonsterToUsers() As System.Data.Linq.Table(Of tblmonsterToUser)
 			Get
-				Return Me.GetTable(Of tblmonster)
+				Return Me.GetTable(Of tblmonsterToUser)
 			End Get
 		End Property
 		
@@ -95,9 +95,9 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler.Dal
 			End Get
 		End Property
 		
-		Public ReadOnly Property tblmonsterToUsers() As System.Data.Linq.Table(Of tblmonsterToUser)
+		Public ReadOnly Property tblmonsters() As System.Data.Linq.Table(Of tblmonster)
 			Get
-				Return Me.GetTable(Of tblmonsterToUser)
+				Return Me.GetTable(Of tblmonster)
 			End Get
 		End Property
 		
@@ -112,6 +112,372 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler.Dal
 			Dim result As IExecuteResult = Me.ExecuteMethodCall(Me, CType(MethodInfo.GetCurrentMethod,MethodInfo), userid)
 			Return CType(result.ReturnValue,ISingleResult(Of AJ_getMonsterlistExtResult))
 		End Function
+	End Class
+	
+	<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.tblmonsterToUser")>  _
+	Partial Public Class tblmonsterToUser
+		Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+		
+		Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
+		
+		Private _id As Integer
+		
+		Private _monid As System.Nullable(Of Integer)
+		
+		Private _userid As System.Nullable(Of Integer)
+		
+		Private _MonsterScore As System.Nullable(Of Integer)
+		
+		Private _monlevel As System.Nullable(Of Integer)
+		
+		Private _MonsterXP As System.Nullable(Of Integer)
+		
+    #Region "Extensibility Method Definitions"
+    Partial Private Sub OnLoaded()
+    End Sub
+    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
+    End Sub
+    Partial Private Sub OnCreated()
+    End Sub
+    Partial Private Sub OnidChanging(value As Integer)
+    End Sub
+    Partial Private Sub OnidChanged()
+    End Sub
+    Partial Private Sub OnmonidChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnmonidChanged()
+    End Sub
+    Partial Private Sub OnuseridChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnuseridChanged()
+    End Sub
+    Partial Private Sub OnMonsterScoreChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnMonsterScoreChanged()
+    End Sub
+    Partial Private Sub OnmonlevelChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnmonlevelChanged()
+    End Sub
+    Partial Private Sub OnMonsterXPChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnMonsterXPChanged()
+    End Sub
+    #End Region
+		
+		Public Sub New()
+			MyBase.New
+			OnCreated
+		End Sub
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_id", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
+		Public Property id() As Integer
+			Get
+				Return Me._id
+			End Get
+			Set
+				If ((Me._id = value)  _
+							= false) Then
+					Me.OnidChanging(value)
+					Me.SendPropertyChanging
+					Me._id = value
+					Me.SendPropertyChanged("id")
+					Me.OnidChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monid", DbType:="Int")>  _
+		Public Property monid() As System.Nullable(Of Integer)
+			Get
+				Return Me._monid
+			End Get
+			Set
+				If (Me._monid.Equals(value) = false) Then
+					Me.OnmonidChanging(value)
+					Me.SendPropertyChanging
+					Me._monid = value
+					Me.SendPropertyChanged("monid")
+					Me.OnmonidChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_userid", DbType:="Int")>  _
+		Public Property userid() As System.Nullable(Of Integer)
+			Get
+				Return Me._userid
+			End Get
+			Set
+				If (Me._userid.Equals(value) = false) Then
+					Me.OnuseridChanging(value)
+					Me.SendPropertyChanging
+					Me._userid = value
+					Me.SendPropertyChanged("userid")
+					Me.OnuseridChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_MonsterScore", DbType:="Int")>  _
+		Public Property MonsterScore() As System.Nullable(Of Integer)
+			Get
+				Return Me._MonsterScore
+			End Get
+			Set
+				If (Me._MonsterScore.Equals(value) = false) Then
+					Me.OnMonsterScoreChanging(value)
+					Me.SendPropertyChanging
+					Me._MonsterScore = value
+					Me.SendPropertyChanged("MonsterScore")
+					Me.OnMonsterScoreChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monlevel", DbType:="Int")>  _
+		Public Property monlevel() As System.Nullable(Of Integer)
+			Get
+				Return Me._monlevel
+			End Get
+			Set
+				If (Me._monlevel.Equals(value) = false) Then
+					Me.OnmonlevelChanging(value)
+					Me.SendPropertyChanging
+					Me._monlevel = value
+					Me.SendPropertyChanged("monlevel")
+					Me.OnmonlevelChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_MonsterXP", DbType:="Int")>  _
+		Public Property MonsterXP() As System.Nullable(Of Integer)
+			Get
+				Return Me._MonsterXP
+			End Get
+			Set
+				If (Me._MonsterXP.Equals(value) = false) Then
+					Me.OnMonsterXPChanging(value)
+					Me.SendPropertyChanging
+					Me._MonsterXP = value
+					Me.SendPropertyChanged("MonsterXP")
+					Me.OnMonsterXPChanged
+				End If
+			End Set
+		End Property
+		
+		Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
+		
+		Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+		
+		Protected Overridable Sub SendPropertyChanging()
+			If ((Me.PropertyChangingEvent Is Nothing)  _
+						= false) Then
+				RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
+			End If
+		End Sub
+		
+		Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
+			If ((Me.PropertyChangedEvent Is Nothing)  _
+						= false) Then
+				RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
+			End If
+		End Sub
+	End Class
+	
+	<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.tblmonsterList")>  _
+	Partial Public Class tblmonsterList
+		Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+		
+		Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
+		
+		Private _monId As Integer
+		
+		Private _monsternamn As String
+		
+		Private _monstersrc As String
+		
+		Private _monsterinfo As String
+		
+		Private _basepoint As System.Nullable(Of Integer)
+		
+		Private _bonus As System.Nullable(Of Integer)
+		
+		Private _maxpoint As System.Nullable(Of Integer)
+		
+    #Region "Extensibility Method Definitions"
+    Partial Private Sub OnLoaded()
+    End Sub
+    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
+    End Sub
+    Partial Private Sub OnCreated()
+    End Sub
+    Partial Private Sub OnmonIdChanging(value As Integer)
+    End Sub
+    Partial Private Sub OnmonIdChanged()
+    End Sub
+    Partial Private Sub OnmonsternamnChanging(value As String)
+    End Sub
+    Partial Private Sub OnmonsternamnChanged()
+    End Sub
+    Partial Private Sub OnmonstersrcChanging(value As String)
+    End Sub
+    Partial Private Sub OnmonstersrcChanged()
+    End Sub
+    Partial Private Sub OnmonsterinfoChanging(value As String)
+    End Sub
+    Partial Private Sub OnmonsterinfoChanged()
+    End Sub
+    Partial Private Sub OnbasepointChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnbasepointChanged()
+    End Sub
+    Partial Private Sub OnbonusChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnbonusChanged()
+    End Sub
+    Partial Private Sub OnmaxpointChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnmaxpointChanged()
+    End Sub
+    #End Region
+		
+		Public Sub New()
+			MyBase.New
+			OnCreated
+		End Sub
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monId", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
+		Public Property monId() As Integer
+			Get
+				Return Me._monId
+			End Get
+			Set
+				If ((Me._monId = value)  _
+							= false) Then
+					Me.OnmonIdChanging(value)
+					Me.SendPropertyChanging
+					Me._monId = value
+					Me.SendPropertyChanged("monId")
+					Me.OnmonIdChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monsternamn", DbType:="NVarChar(50)")>  _
+		Public Property monsternamn() As String
+			Get
+				Return Me._monsternamn
+			End Get
+			Set
+				If (String.Equals(Me._monsternamn, value) = false) Then
+					Me.OnmonsternamnChanging(value)
+					Me.SendPropertyChanging
+					Me._monsternamn = value
+					Me.SendPropertyChanged("monsternamn")
+					Me.OnmonsternamnChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monstersrc", DbType:="NVarChar(250)")>  _
+		Public Property monstersrc() As String
+			Get
+				Return Me._monstersrc
+			End Get
+			Set
+				If (String.Equals(Me._monstersrc, value) = false) Then
+					Me.OnmonstersrcChanging(value)
+					Me.SendPropertyChanging
+					Me._monstersrc = value
+					Me.SendPropertyChanged("monstersrc")
+					Me.OnmonstersrcChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monsterinfo", DbType:="NVarChar(500)")>  _
+		Public Property monsterinfo() As String
+			Get
+				Return Me._monsterinfo
+			End Get
+			Set
+				If (String.Equals(Me._monsterinfo, value) = false) Then
+					Me.OnmonsterinfoChanging(value)
+					Me.SendPropertyChanging
+					Me._monsterinfo = value
+					Me.SendPropertyChanged("monsterinfo")
+					Me.OnmonsterinfoChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_basepoint", DbType:="Int")>  _
+		Public Property basepoint() As System.Nullable(Of Integer)
+			Get
+				Return Me._basepoint
+			End Get
+			Set
+				If (Me._basepoint.Equals(value) = false) Then
+					Me.OnbasepointChanging(value)
+					Me.SendPropertyChanging
+					Me._basepoint = value
+					Me.SendPropertyChanged("basepoint")
+					Me.OnbasepointChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_bonus", DbType:="Int")>  _
+		Public Property bonus() As System.Nullable(Of Integer)
+			Get
+				Return Me._bonus
+			End Get
+			Set
+				If (Me._bonus.Equals(value) = false) Then
+					Me.OnbonusChanging(value)
+					Me.SendPropertyChanging
+					Me._bonus = value
+					Me.SendPropertyChanged("bonus")
+					Me.OnbonusChanged
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_maxpoint", DbType:="Int")>  _
+		Public Property maxpoint() As System.Nullable(Of Integer)
+			Get
+				Return Me._maxpoint
+			End Get
+			Set
+				If (Me._maxpoint.Equals(value) = false) Then
+					Me.OnmaxpointChanging(value)
+					Me.SendPropertyChanging
+					Me._maxpoint = value
+					Me.SendPropertyChanged("maxpoint")
+					Me.OnmaxpointChanged
+				End If
+			End Set
+		End Property
+		
+		Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
+		
+		Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+		
+		Protected Overridable Sub SendPropertyChanging()
+			If ((Me.PropertyChangingEvent Is Nothing)  _
+						= false) Then
+				RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
+			End If
+		End Sub
+		
+		Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
+			If ((Me.PropertyChangedEvent Is Nothing)  _
+						= false) Then
+				RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
+			End If
+		End Sub
 	End Class
 	
 	<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.tblmonster")>  _
@@ -219,328 +585,6 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler.Dal
 					Me._totalscore = value
 					Me.SendPropertyChanged("totalscore")
 					Me.OntotalscoreChanged
-				End If
-			End Set
-		End Property
-		
-		Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
-		
-		Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-		
-		Protected Overridable Sub SendPropertyChanging()
-			If ((Me.PropertyChangingEvent Is Nothing)  _
-						= false) Then
-				RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
-			End If
-		End Sub
-		
-		Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
-			If ((Me.PropertyChangedEvent Is Nothing)  _
-						= false) Then
-				RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
-			End If
-		End Sub
-	End Class
-	
-	<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.tblmonsterList")>  _
-	Partial Public Class tblmonsterList
-		Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-		
-		Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
-		
-		Private _monId As Integer
-		
-		Private _monsternamn As String
-		
-		Private _monstersrc As String
-		
-		Private _monsterinfo As String
-		
-		Private _basepoint As System.Nullable(Of Integer)
-		
-		Private _bonus As System.Nullable(Of Integer)
-		
-    #Region "Extensibility Method Definitions"
-    Partial Private Sub OnLoaded()
-    End Sub
-    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
-    End Sub
-    Partial Private Sub OnCreated()
-    End Sub
-    Partial Private Sub OnmonIdChanging(value As Integer)
-    End Sub
-    Partial Private Sub OnmonIdChanged()
-    End Sub
-    Partial Private Sub OnmonsternamnChanging(value As String)
-    End Sub
-    Partial Private Sub OnmonsternamnChanged()
-    End Sub
-    Partial Private Sub OnmonstersrcChanging(value As String)
-    End Sub
-    Partial Private Sub OnmonstersrcChanged()
-    End Sub
-    Partial Private Sub OnmonsterinfoChanging(value As String)
-    End Sub
-    Partial Private Sub OnmonsterinfoChanged()
-    End Sub
-    Partial Private Sub OnbasepointChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnbasepointChanged()
-    End Sub
-    Partial Private Sub OnbonusChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnbonusChanged()
-    End Sub
-    #End Region
-		
-		Public Sub New()
-			MyBase.New
-			OnCreated
-		End Sub
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monId", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
-		Public Property monId() As Integer
-			Get
-				Return Me._monId
-			End Get
-			Set
-				If ((Me._monId = value)  _
-							= false) Then
-					Me.OnmonIdChanging(value)
-					Me.SendPropertyChanging
-					Me._monId = value
-					Me.SendPropertyChanged("monId")
-					Me.OnmonIdChanged
-				End If
-			End Set
-		End Property
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monsternamn", DbType:="NVarChar(50)")>  _
-		Public Property monsternamn() As String
-			Get
-				Return Me._monsternamn
-			End Get
-			Set
-				If (String.Equals(Me._monsternamn, value) = false) Then
-					Me.OnmonsternamnChanging(value)
-					Me.SendPropertyChanging
-					Me._monsternamn = value
-					Me.SendPropertyChanged("monsternamn")
-					Me.OnmonsternamnChanged
-				End If
-			End Set
-		End Property
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monstersrc", DbType:="NVarChar(250)")>  _
-		Public Property monstersrc() As String
-			Get
-				Return Me._monstersrc
-			End Get
-			Set
-				If (String.Equals(Me._monstersrc, value) = false) Then
-					Me.OnmonstersrcChanging(value)
-					Me.SendPropertyChanging
-					Me._monstersrc = value
-					Me.SendPropertyChanged("monstersrc")
-					Me.OnmonstersrcChanged
-				End If
-			End Set
-		End Property
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monsterinfo", DbType:="NVarChar(500)")>  _
-		Public Property monsterinfo() As String
-			Get
-				Return Me._monsterinfo
-			End Get
-			Set
-				If (String.Equals(Me._monsterinfo, value) = false) Then
-					Me.OnmonsterinfoChanging(value)
-					Me.SendPropertyChanging
-					Me._monsterinfo = value
-					Me.SendPropertyChanged("monsterinfo")
-					Me.OnmonsterinfoChanged
-				End If
-			End Set
-		End Property
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_basepoint", DbType:="Int")>  _
-		Public Property basepoint() As System.Nullable(Of Integer)
-			Get
-				Return Me._basepoint
-			End Get
-			Set
-				If (Me._basepoint.Equals(value) = false) Then
-					Me.OnbasepointChanging(value)
-					Me.SendPropertyChanging
-					Me._basepoint = value
-					Me.SendPropertyChanged("basepoint")
-					Me.OnbasepointChanged
-				End If
-			End Set
-		End Property
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_bonus", DbType:="Int")>  _
-		Public Property bonus() As System.Nullable(Of Integer)
-			Get
-				Return Me._bonus
-			End Get
-			Set
-				If (Me._bonus.Equals(value) = false) Then
-					Me.OnbonusChanging(value)
-					Me.SendPropertyChanging
-					Me._bonus = value
-					Me.SendPropertyChanged("bonus")
-					Me.OnbonusChanged
-				End If
-			End Set
-		End Property
-		
-		Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
-		
-		Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-		
-		Protected Overridable Sub SendPropertyChanging()
-			If ((Me.PropertyChangingEvent Is Nothing)  _
-						= false) Then
-				RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
-			End If
-		End Sub
-		
-		Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
-			If ((Me.PropertyChangedEvent Is Nothing)  _
-						= false) Then
-				RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
-			End If
-		End Sub
-	End Class
-	
-	<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.tblmonsterToUser")>  _
-	Partial Public Class tblmonsterToUser
-		Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-		
-		Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
-		
-		Private _id As Integer
-		
-		Private _monid As System.Nullable(Of Integer)
-		
-		Private _userid As System.Nullable(Of Integer)
-		
-		Private _MonsterScore As System.Nullable(Of Integer)
-		
-		Private _monlevel As System.Nullable(Of Integer)
-		
-    #Region "Extensibility Method Definitions"
-    Partial Private Sub OnLoaded()
-    End Sub
-    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
-    End Sub
-    Partial Private Sub OnCreated()
-    End Sub
-    Partial Private Sub OnidChanging(value As Integer)
-    End Sub
-    Partial Private Sub OnidChanged()
-    End Sub
-    Partial Private Sub OnmonidChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnmonidChanged()
-    End Sub
-    Partial Private Sub OnuseridChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnuseridChanged()
-    End Sub
-    Partial Private Sub OnMonsterScoreChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnMonsterScoreChanged()
-    End Sub
-    Partial Private Sub OnmonlevelChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnmonlevelChanged()
-    End Sub
-    #End Region
-		
-		Public Sub New()
-			MyBase.New
-			OnCreated
-		End Sub
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_id", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
-		Public Property id() As Integer
-			Get
-				Return Me._id
-			End Get
-			Set
-				If ((Me._id = value)  _
-							= false) Then
-					Me.OnidChanging(value)
-					Me.SendPropertyChanging
-					Me._id = value
-					Me.SendPropertyChanged("id")
-					Me.OnidChanged
-				End If
-			End Set
-		End Property
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monid", DbType:="Int")>  _
-		Public Property monid() As System.Nullable(Of Integer)
-			Get
-				Return Me._monid
-			End Get
-			Set
-				If (Me._monid.Equals(value) = false) Then
-					Me.OnmonidChanging(value)
-					Me.SendPropertyChanging
-					Me._monid = value
-					Me.SendPropertyChanged("monid")
-					Me.OnmonidChanged
-				End If
-			End Set
-		End Property
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_userid", DbType:="Int")>  _
-		Public Property userid() As System.Nullable(Of Integer)
-			Get
-				Return Me._userid
-			End Get
-			Set
-				If (Me._userid.Equals(value) = false) Then
-					Me.OnuseridChanging(value)
-					Me.SendPropertyChanging
-					Me._userid = value
-					Me.SendPropertyChanged("userid")
-					Me.OnuseridChanged
-				End If
-			End Set
-		End Property
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_MonsterScore", DbType:="Int")>  _
-		Public Property MonsterScore() As System.Nullable(Of Integer)
-			Get
-				Return Me._MonsterScore
-			End Get
-			Set
-				If (Me._MonsterScore.Equals(value) = false) Then
-					Me.OnMonsterScoreChanging(value)
-					Me.SendPropertyChanging
-					Me._MonsterScore = value
-					Me.SendPropertyChanged("MonsterScore")
-					Me.OnMonsterScoreChanged
-				End If
-			End Set
-		End Property
-		
-		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_monlevel", DbType:="Int")>  _
-		Public Property monlevel() As System.Nullable(Of Integer)
-			Get
-				Return Me._monlevel
-			End Get
-			Set
-				If (Me._monlevel.Equals(value) = false) Then
-					Me.OnmonlevelChanging(value)
-					Me.SendPropertyChanging
-					Me._monlevel = value
-					Me.SendPropertyChanged("monlevel")
-					Me.OnmonlevelChanged
 				End If
 			End Set
 		End Property
@@ -752,6 +796,8 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler.Dal
 		
 		Private _MonsterScore As System.Nullable(Of Integer)
 		
+		Private _MonsterXP As System.Nullable(Of Integer)
+		
 		Private _monlevel As System.Nullable(Of Integer)
 		
 		Public Sub New()
@@ -839,6 +885,18 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler.Dal
 			Set
 				If (Me._MonsterScore.Equals(value) = false) Then
 					Me._MonsterScore = value
+				End If
+			End Set
+		End Property
+		
+		<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_MonsterXP", DbType:="Int")>  _
+		Public Property MonsterXP() As System.Nullable(Of Integer)
+			Get
+				Return Me._MonsterXP
+			End Get
+			Set
+				If (Me._MonsterXP.Equals(value) = false) Then
+					Me._MonsterXP = value
 				End If
 			End Set
 		End Property

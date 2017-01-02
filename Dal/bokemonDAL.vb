@@ -22,10 +22,11 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler
                 mon.Bokemoninfo = monst.monsterinfo
                 mon.Monsternamn = monst.monsternamn
                 mon.BokemonScore = monst.MonsterScore
+                mon.BokemonXP = monst.MonsterXP
                 mon.BokemonLevel = monst.monlevel
                 mon.BasePoints = monst.basepoint
                 mon.Bonus = monst.bonus
-                totalscore += monst.MonsterScore
+                totalscore += monst.MonsterXP
                 usermonsterlist.Add(mon)
 
             Next
@@ -146,6 +147,7 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler
                 utm.userid = userid
                 utm.monlevel = 1
                 utm.MonsterScore = 1000
+                utm.MonsterXP = 1000
 
                 _linqobj.tblmonsterToUsers.InsertOnSubmit(utm)
                 _linqobj.SubmitChanges()
@@ -160,16 +162,17 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler
         End Function
 
 
-        Public Function updMonsterToUser(ByVal userid As Integer, ByVal monsterid As Integer, ByVal monlev As Integer, ByVal monscore As Integer) As Boolean
+        Public Function updMonsterToUser(ByVal userid As Integer, ByVal monsterid As Integer, ByVal monlev As Integer, ByVal monscore As Integer, ByVal monXP As Integer) As Boolean
             Dim ret As Boolean = False
 
-        Dim utm = (From t In _linqobj.tblmonsterToUsers
-                   Where t.userid = userid And t.monid = monsterid
-                   Select t).First()
+            Dim utm = (From t In _linqobj.tblmonsterToUsers
+                       Where t.userid = userid And t.monid = monsterid
+                       Select t).First()
             Try
 
                 utm.monlevel = monlev
                 utm.MonsterScore = monscore
+                utm.MonsterXP = monXP
                 _linqobj.SubmitChanges()
 
                 ret = True
@@ -181,8 +184,22 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler
 
         End Function
 
+        Public Function getBokemonmaxpoint(monsterid As Integer) As Integer
+            Dim ret As Integer = 0
+            Dim monsterlist = (From t In _linqobj.tblmonsterLists
+                               Where t.monId = monsterid
+                               Select t).First()
 
-        
+            Try
+
+                ret = monsterlist.maxpoint
+            Catch ex As Exception
+                ret = 0
+            End Try
+
+            Return ret
+        End Function
+
 
 #Region "Bokemon HELPER"
 
@@ -196,7 +213,7 @@ Namespace AJKontroller.webApiHelpers.bokemonHandler
             Try
                 If utm.Count > 0 Then
                     For Each mon In utm
-                        ret = mon.MonsterScore
+                        ret = mon.MonsterXP
                     Next
                 End If
 
