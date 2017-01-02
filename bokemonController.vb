@@ -2,6 +2,11 @@
 Imports System.DateTime
 Imports AJKontroller.webApiHelpers.bokemonHandler.Dal
 
+'filerna ligger på github:
+'git remote add origin https://github.com/andreas-barnensbibliotek/ajbokemonHandlerAppcode.git
+'git push -u origin master
+
+
 Namespace AJKontroller.webApiHelpers.bokemonHandler
     Public Class bokemonController
         Public Function getbaseUserAndMonsterList(ByVal userid As Integer) As bokemonInfo
